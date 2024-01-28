@@ -38,17 +38,33 @@ public class DataHelper {
     @Value
     public static class VerificationCode {
         String code;
+
+        public String getCode() {
+            return getCode();
+        }
     }
 
     @Value
     public static class CardInfo {
         String cardNumber;
         String testId;
+
+        public String getCardNumber() {
+            return getCardNumber();
+        }
     }
 
     @Value
     public static class AuthInfo {
         String login;
         String password;
+
+        public String getLogin() {
+            return getLogin();
+        }
+
+        public String getPassword() {
+            return getPassword();
+        }
     }
 }

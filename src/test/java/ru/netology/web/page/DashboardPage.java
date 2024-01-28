@@ -32,4 +32,8 @@ public class DashboardPage {
         var value = text.substring(start + balanceStart.length(), finish);
         return Integer.parseInt(value);
     }
+
+    public Object selectCardToTransfer(DataHelper.CardInfo secondCardInfo) {
+        return selectCardToTransfer(secondCardInfo);
+    }
 }
