@@ -21,13 +21,23 @@ public class DashboardPage {
     public DashboardPage() {
         heading.shouldBe(visible);
     }
-    public void Dashboard() {
-    }
 
-    public int getFirstCardBalance() {
-        val text = cards.first().text();
+    public int getCardBalance(DataHelper.CardInfo cardInfo) {
+        var text = cards.findBy(Condition.text("**** **** **** " + cardInfo.getCardNumber().substring(15))).getText();
         return extractBalance(text);
     }
+
+
+    public int getCardBalance(int index) {
+        var text = cards.get(index).getText();
+        return extractBalance(text);
+    }
+
+    public  TransferPage selectCardToTransfer(DataHelper.CardInfo cardInfo) {
+        cards.findBy(Condition.attribute("data-test-id",cardInfo.getTestId())).$("button").click();
+        return new TransferPage();
+    }
+
 
     private int extractBalance(String text) {
         val start = text.indexOf(balanceStart);
@@ -37,14 +47,8 @@ public class DashboardPage {
     }
 
 
-    public int getCardBalance(DataHelper.CardInfo cardInfo) {
-        var text = cards.findBy(Condition.text("**** **** **** " + cardInfo.getCardNumber().substring(15))).getText();
-        return extractBalance(text);
-    }
 
 
 
-    public Object selectCardToTransfer(DataHelper.CardInfo secondCardInfo) {
-        return selectCardToTransfer(secondCardInfo);
-    }
+
 }
